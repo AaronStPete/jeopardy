@@ -1,6 +1,12 @@
 const BASE_URL = "http://jservice.io/"
 let categoryArr = []
 const CAT_URL = "http://jservice.io/api/clues?category="
+let cat1="";
+let cat2="";
+let cat3="";
+let cat4="";
+let cat5="";
+
 
 angular
   .module("mainApp", [])
@@ -10,45 +16,39 @@ angular
       method: "GET",
       url: BASE_URL + "api/random/",
     }).then(response => {
-      let categoryID = response.data[0].category_id
-      categoryArr.push(categoryID)
+      cat1 = response.data[0].category_id
     })
 
     $http({
       method: "GET",
       url: BASE_URL + "api/random/",
     }).then(response => {
-      let categoryID = response.data[0].category_id
-      categoryArr.push(categoryID)
+      cat2 = response.data[0].category_id
     })
     $http({
       method: "GET",
       url: BASE_URL + "api/random/",
     }).then(response => {
-      let categoryID = response.data[0].category_id
-      categoryArr.push(categoryID)
+      cat3 = response.data[0].category_id
     })
     $http({
       method: "GET",
       url: BASE_URL + "api/random/",
     }).then(response => {
-      let categoryID = response.data[0].category_id
-      categoryArr.push(categoryID)
+      let cat4 = response.data[0].category_id
     })
     $http({
       method: "GET",
       url: BASE_URL + "api/random/",
     }).then(response => {
-      let categoryID = response.data[0].category_id
-      categoryArr.push(categoryID)
-      console.log("Your Category IDs are: ", categoryArr);
+      cat5 = response.data[0].category_id
     })
-    ///////This next portion is to pull 6 random questions from each category
+    /////This next portion is to pull 6 random questions from each category
     $http({
       method: "GET",
-      url: CAT_URL + (categoryArr[0]),
+      url: CAT_URL + cat1,
     }).then(response => {
-      console.log(categoryArr[0])
+      console.log(CAT_URL + cat1)
       console.log(response)
     })
   }])
